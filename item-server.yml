@@ -1,0 +1,75 @@
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: kaysen
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 10
+  application:
+    name: item-server
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: kaysen
+    password: kaysen
+    virtual-host: /kaysen
+    template:
+      exchange: ks.item.exchange
+      retry:
+        enabled: true
+        initial-interval: 1000ms
+        max-interval: 100000ms
+        max-attempts: 3
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: kaysen
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 10
+  application:
+    name: item-server
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: kaysen
+    password: kaysen
+    virtual-host: /kaysen
+    template:
+      exchange: ks.item.exchange
+      retry:
+        enabled: true
+        initial-interval: 1000ms
+        max-interval: 100000ms
+        max-attempts: 3
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
